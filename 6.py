@@ -1,6 +1,3 @@
-from tkinter import Y
-
-
 x=25
 y=120
 z=x
