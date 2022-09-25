@@ -1,5 +1,3 @@
-a = int(input('Введите число a:'))
-b = int(input('Введите число b:'))
-c = int(input('Введите число c:'))
-s = min(a, b, c)
-print('Наименьшее число:', s)
+def min_of_three(a, b, c):
+    s = min(a, b, c)
+    print('Наименьшее число:', s)
