@@ -1,0 +1,5 @@
+a = int(input('Введите число a:'))
+b = int(input('Введите число b:'))
+c = int(input('Введите число c:'))
+s = sum([a,b,c])
+print('s =', s)
