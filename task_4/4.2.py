@@ -5,4 +5,3 @@ def numbers(A, B):
     else:
         for i in range(A, B - 1, -1):
             print(i)
-numbers(5,1)
