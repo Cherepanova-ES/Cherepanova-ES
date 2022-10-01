@@ -4,6 +4,3 @@ def numbers(n):
         sum += int(input())
     print(sum)
 
-
-n = int(input())
-numbers(n)
