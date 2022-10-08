@@ -4,6 +4,3 @@ def numbers(n):
         s += i ** 3
 
     print(s)
-
-
-
