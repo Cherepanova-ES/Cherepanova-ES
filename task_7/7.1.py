@@ -4,11 +4,11 @@ print(a)
 c = list(set(a))
 
 def find_duplicates(a):
-    for cc in c:
+    for d in c:
         b = []
         for i in range(0, len(a)):
-            if a[i] == cc:
+            if a[i] == d:
                 b.append(i)
         if len(b) > 1:
-            print(cc)
+            print(d)
 find_duplicates(a)
