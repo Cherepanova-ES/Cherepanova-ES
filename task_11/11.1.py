@@ -23,3 +23,4 @@ txt.grid(column=0, row=0)
 btn = Button(window, text="Нажмите на кнопку и закройте окно!", command=get_json)
 btn.grid(column=1, row=0)
 window.mainloop()
+
