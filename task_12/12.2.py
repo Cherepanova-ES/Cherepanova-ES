@@ -1,5 +1,5 @@
 #Блок Б номер 2
-def IsPrime(n):
+def determine_type(n):
     k = 2
     p = 0
     while k <= pow(n, 0.5) and k > 1:
@@ -10,7 +10,7 @@ def IsPrime(n):
 
 
 n = int(input())
-if IsPrime(n):
+if determine_type(n):
     print("YES")
 else:
     print("NO")
