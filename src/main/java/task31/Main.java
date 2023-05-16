@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        int i = 100; // искомый элемент ряда
+        int i = 100;
         long fib = getFibonacci(i);
         int maxDigit = getMaxDigit(fib);
         System.out.printf("f(%d) = %d  # вернет [(%d, %d)]%n", i, fib, maxDigit, getCountOfMaxDigit(fib, maxDigit));
