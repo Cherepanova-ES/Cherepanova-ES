@@ -1,5 +1,5 @@
 package course2;
-import java.util.*;
+
 public class Child {
     private String fullName;
     private String gender;
@@ -9,6 +9,18 @@ public class Child {
         this.fullName = fullName;
         this.gender = gender;
         this.age = age;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public int getAge() {
+        return age;
     }
 
 
