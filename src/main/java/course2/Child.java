@@ -2,10 +2,10 @@ package course2;
 
 public class Child {
     private String fullName;
-    private String gender;
+    private Gender gender;
     private int age;
 
-    public Child(String fullName, String gender, int age) {
+    public Child(String fullName, Gender gender, int age) {
         this.fullName = fullName;
         this.gender = gender;
         this.age = age;
@@ -15,7 +15,7 @@ public class Child {
         return fullName;
     }
 
-    public String getGender() {
+    public Gender getGender() {
         return gender;
     }
 
