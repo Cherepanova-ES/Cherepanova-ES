@@ -1,65 +1,80 @@
 package course2;
-import java.util.HashMap;
-import java.util.Map;
+
+import course2.model.Child;
+import course2.model.Gender;
+import course2.model.Group;
+import course2.model.Kindergarten;
+import course2.ui.Application;
+
+import javax.swing.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 public class Main {
-    private Map<Integer, Group> groups;
-
-    public Main() {
-        this.groups = new HashMap<>();
-    }
-
-    public void addGroup(int number, String name) {
-        Group group = new Group(name, number);
-        groups.put(number, group);
-    }
-
-    public void removeGroup(int number) {
-        groups.remove(number);
-    }
-
-    public void addChildToGroup(int groupNumber, Child child) {
-        Group group = groups.get(groupNumber);
-        if (group != null) {
-            group.addChild(child);
-        } else {
-            System.out.println("Группа не найдена");
-        }
-    }
-
-    public void removeChildFromGroup(int groupNumber, Child child) {
-        Group group = groups.get(groupNumber);
-        if (group != null) {
-            group.removeChild(child);
-        } else {
-            System.out.println("Группа не найдена");
-        }
-    }
-
-    public void displayGroupInfo(int groupNumber) {
-        Group group = groups.get(groupNumber);
-        if (group != null) {
-            System.out.println("Группа: " + group.getName() + ", номер: " + group.getNumber());
-            System.out.println("Дети в группе:");
-            for (Child child : group.getChildren()) {
-                System.out.println("Имя: " + child.getFullName() + ", пол: " + child.getGender() + ", возраст: " + child.getAge());
-            }
-        } else {
-            System.out.println("Группа не найдена");
-        }
-    }
 
     public static void main(String[] args) {
-        Main system = new Main();
+        var testData = getTestData();
+        // создаем экземпляр класса с тестовыми данными
+        var kindergarten = new Kindergarten(testData);
+        // запускаем Swing приложение
+        SwingUtilities.invokeLater(() -> new Application(kindergarten));
+    }
 
-        system.addGroup(1, "Солнышко");
+    private static List<Group> getTestData() {
+        String[] groupNames = {
+                "Солнышко",
+                "Тополёк",
+                "Незнайка"
+        };
 
-        Child child1 = new Child("Диана Ашигова", "ж", 4);
-        system.addChildToGroup(1, child1);
+        String[] childFullNames = {
+                "Мартынов Матвей Михайлович",
+                "Кулагин Михаил Кириллович",
+                "Нечаева Таисия Анатольевна",
+                "Королев Родион Матвеевич",
+                "Михайлова Софья Фёдоровна",
+                "Тимофеев Даниил Саввич",
+                "Емельянова Мадина Савельевна",
+                "Павлова Арина Владиславовна",
+                "Беляева Алина Сергеевна",
+                "Леонова Марьяна Макаровна",
+                "Андреев Демид Мартинович",
+                "Виноградова Ева Романовна",
+                "Андреева Анастасия Савельевна",
+                "Воробьева Ева Александровна",
+                "Григорьев Фёдор Дмитриевич",
+                "Морозов Роман Григорьевич",
+                "Бондарев Михаил Макарович",
+                "Андреев Тимофей Егорович",
+                "Румянцев Михаил Александрович",
+                "Басов Илья Алексеевич"
+        };
 
-        Child child2 = new Child("Иван Петров", "м", 3);
-        system.addChildToGroup(1, child2);
+        var maxInGroup = childFullNames.length / 2;
+        var minInGroup = 3;
+        var maxAge = 7;
+        var minAge = 2;
 
-        system.displayGroupInfo(1);
+        var rand = new Random();
+        List<Group> groups = new ArrayList<>();
 
+        for (int i = 0; i < groupNames.length; i++) {
+            var group = new Group(groupNames[i], i + 1);
+            var childrenCount = rand.nextInt(maxInGroup - minInGroup + 1) + minInGroup;
+
+            for (int j = 0; j < childrenCount; j++) {
+                var index = rand.nextInt(childFullNames.length - 1);
+                var fullName = childFullNames[index];
+                var gender = fullName.endsWith("а") ? Gender.FEMALE : Gender.MALE;
+                var age = rand.nextInt(maxAge - minAge + 1) + minAge;
+                var child = new Child(fullName, gender, age);
+                group.addChild(child);
+            }
+
+            groups.add(group);
+        }
+
+        return groups;
     }
 }
